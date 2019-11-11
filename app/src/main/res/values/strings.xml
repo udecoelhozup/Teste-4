@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Cadastro De Usuário</string>
+    <string-array name="Escolaridades">
+        <item>Ensino Fundamental</item>
+        <item>Ensino Médio</item>
+        <item>Ensino Superior</item>
+    </string-array>
+
+    <string-array name="Estados">
+        <item>ACRE - AC</item>
+        <item>ALAGOAS - AL</item>
+        <item>AMAPÁ - AP</item>
+        <item>AMAZONAS - AM</item>
+        <item>BAHIA - BA</item>
+        <item>CEARÁ - CE</item>
+        <item>DISTRITO FEDERAL - DF</item>
+        <item>ESPÍRITO SANTO - ES</item>
+        <item>GOIAS - GO</item>
+        <item>MARANHÃO - MA</item>
+        <item>MATO GROSSO - MT</item>
+        <item>MATO GROSSO DO SUL - MS</item>
+        <item>MINAS GERAIS - MG</item>
+        <item>PARÁ - PA</item>
+        <item>PARAÍBA - PB</item>
+        <item>PARANÁ - PR</item>
+        <item>PERNAMBUCO - PE</item>
+        <item>PIAUÍ - PI</item>
+        <item>RIO DE JANEIRO - RJ</item>
+        <item>RIO GRANDE DO NORTE - RN</item>
+        <item>RIO GRANDE DO SUL - RS</item>
+        <item>RONDÔNIA - RO</item>
+        <item>RORAIMA - RR</item>
+        <item>SANTA CATARINA - SC</item>
+        <item>SÃO PAULO - SP</item>
+        <item>SERGIPE - SE</item>
+        <item>TOCANTINS - TO</item>
+    </string-array>
+</resources>

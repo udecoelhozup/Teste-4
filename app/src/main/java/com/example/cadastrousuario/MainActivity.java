@@ -28,19 +28,16 @@ public class MainActivity extends AppCompatActivity {
     EditText edtBairro;
     EditText edtSenha;
     EditText edtConfirmaSenha;
-    Boolean validate;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-
-
-
-
         Pessoa pessoa = new Pessoa();
-
-
         edtEscolaridade = (Spinner) findViewById(R.id.spinnerEscolaridade);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Escolaridades, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -52,27 +49,100 @@ public class MainActivity extends AppCompatActivity {
         edtEstado.setAdapter(adapter1);
 
         limparDados();
+    }
 
+    public MessageError msg(){
+        MessageError msg = new MessageError();
+
+        msg.setLogMessageNome("O campo Nome é obrigatório");
+        msg.setLogMessageSobrenome("O campo Sobrenome é obrigatório");
+        msg.setLogMessageTelefone("O campo Telefone é obrigatório");
+        msg.setLogMessageCelular("O campo Celular é obrigatório");
+        msg.setLogMessageCpf("O campo CPF é obrigatório");
+        msg.setLogMessageEndereco("O campo Endereço é obrigatório");
+        msg.setLogMessageBairro("O campo Bairro é obrigatório");
+        msg.setLogMessageSenha("As senhas não conferem");
+
+        return msg;
+    }
+
+    public void insereDados(){
+
+        edtNome = (EditText) findViewById(R.id.nome);
+        edtSobrenome = (EditText) findViewById(R.id.sobreNome);
+        edtTelefone = (EditText) findViewById(R.id.telefone);
+        edtCelular = (EditText) findViewById(R.id.celular);
+        edtCpf = (EditText) findViewById(R.id.cpf);
+        edtEscolaridade = (Spinner) findViewById(R.id.spinnerEscolaridade);
+        edtEndereco = (EditText) findViewById(R.id.endereco);
+        edtBairro = (EditText) findViewById(R.id.bairro);
+        edtEstado = (Spinner) findViewById(R.id.spinner2);
+        edtSenha = (EditText) findViewById(R.id.senha);
+        edtConfirmaSenha = (EditText) findViewById(R.id.corfimaSenha);
 
     }
 
+
+    public boolean validarCampos(){
+        Pessoa pessoa = new Pessoa();
+        MessageError log = msg();
+        boolean validator = true;
+        insereDados();
+
+        String nome = edtNome.getText().toString();
+        String sobreNome = edtSobrenome.getText().toString();
+        String telefone = edtTelefone.getText().toString();
+        String celular = edtCelular.getText().toString();
+        String cpf = edtCpf.getText().toString();
+        String escolaridade = edtEscolaridade.getSelectedItem().toString();
+        String endereco = edtEndereco.getText().toString();
+        String bairro = edtBairro.getText().toString();
+        String estado = edtEstado.getSelectedItem().toString();
+        String senha = edtSenha.getText().toString();
+        String confirmaSenha = edtConfirmaSenha.getText().toString();
+        pessoa.setSenha(edtSenha.getText().toString());
+        pessoa.setConfirmacaoSenha(edtConfirmaSenha.getText().toString());
+
+        if(nome.length() == 0 || nome == null){
+            Toast.makeText(getApplicationContext(),log.getLogMessageNome(),Toast.LENGTH_SHORT).show();
+            validator = false;
+        }else if (sobreNome.length() == 0 || sobreNome == null){
+            Toast.makeText(getApplicationContext(),log.getLogMessageSobrenome(),Toast.LENGTH_SHORT).show();
+            validator = false;
+        }else if(telefone.length() == 0 || telefone == null){
+            Toast.makeText(getApplicationContext(),log.getLogMessageTelefone(),Toast.LENGTH_SHORT).show();
+            validator = false;
+        }else if(celular.length() == 0 || celular == null){
+            Toast.makeText(getApplicationContext(),log.getLogMessageCelular(),Toast.LENGTH_SHORT).show();
+            validator = false;
+        }else if(cpf.length()==0 || cpf.length() > 11){
+            Toast.makeText(getApplicationContext(), log.getLogMessageCpf(), Toast.LENGTH_SHORT).show();
+            validator = false;
+        }else if(endereco.length() == 0 || endereco == null){
+            Toast.makeText(getApplicationContext(), log.getLogMessageEndereco(), Toast.LENGTH_SHORT).show();
+            validator = false;
+        }else if(bairro.length() == 0 || bairro == null){
+            Toast.makeText(getApplicationContext(), log.getLogMessageBairro(), Toast.LENGTH_SHORT).show();
+            validator = false;
+        } else if(pessoa.getSenha().equals(pessoa.getConfirmacaoSenha()) && pessoa.getSenha().length() != 0 && pessoa.getConfirmacaoSenha().length() != 0&&
+                  pessoa.getSenha() != null && pessoa.getConfirmacaoSenha() != null){
+            validator = true;
+        }else if(!pessoa.getSenha().equals(pessoa.getConfirmacaoSenha()) || pessoa.getSenha().length() == 0 || pessoa.getSenha().isEmpty() ||
+                pessoa.getSenha() == null ||pessoa.getConfirmacaoSenha().length() == 0 || pessoa.getConfirmacaoSenha().isEmpty() ||
+                pessoa.getConfirmacaoSenha() == null){
+            validator = false;
+            Toast.makeText(getApplicationContext(), log.getLogMessageSenha(), Toast.LENGTH_SHORT).show();
+        }
+
+        return validator;
+    }
+
     public void limparDados(){
+        insereDados();
         limparDados = (Button) findViewById(R.id.reset);
         limparDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                edtNome = (EditText) findViewById(R.id.nome);
-                edtSobrenome = (EditText) findViewById(R.id.sobreNome);
-                edtTelefone = (EditText) findViewById(R.id.telefone);
-                edtCelular = (EditText) findViewById(R.id.celular);
-                edtCpf = (EditText) findViewById(R.id.cpf);
-                edtEscolaridade = (Spinner) findViewById(R.id.spinnerEscolaridade);
-                edtEndereco = (EditText) findViewById(R.id.endereco);
-                edtBairro = (EditText) findViewById(R.id.bairro);
-                edtEstado = (Spinner) findViewById(R.id.spinner2);
-                edtSenha = (EditText) findViewById(R.id.senha);
-                edtConfirmaSenha = (EditText) findViewById(R.id.corfimaSenha);
 
                 edtNome.getText().clear();
                 edtSobrenome.getText().clear();
@@ -91,47 +161,41 @@ public class MainActivity extends AppCompatActivity {
 
     public void enviarDados(View view) {
 
-
+        boolean validator = validarCampos();
         Intent intent = new Intent(this, DadosUsuario.class);
         Pessoa pessoa = registerUser();
-        //intent.putExtra("objeto",spinnerEscolaridade.getSelectedItem().toString());
         intent.putExtra("objeto", pessoa);
-        startActivity(intent);
+
+        if (validator){
+            startActivity(intent);
+        }else{
+            registerUser();
+        }
+
 
     }
 
-
-
     public Pessoa registerUser() {
-        Pessoa pessoa = new Pessoa();
 
-        EditText edtNome = (EditText) findViewById(R.id.nome);
+        Pessoa pessoa = new Pessoa();
+        insereDados();
+
         pessoa.setNome(edtNome.getText().toString());
 
-
-        EditText edtSobrenome = (EditText) findViewById(R.id.sobreNome);
         pessoa.setSobreNome(edtSobrenome.getText().toString());
 
-        EditText edtTelefone = (EditText) findViewById(R.id.telefone);
         pessoa.setTelefone(edtTelefone.getText().toString());
 
-
-        EditText edtCelular = (EditText) findViewById(R.id.celular);
         pessoa.setCelular(edtCelular.getText().toString());
 
-        EditText edtCpf = (EditText) findViewById(R.id.cpf);
         pessoa.setCpf(edtCpf.getText().toString());
 
-        Spinner edtEscolaridade = (Spinner) findViewById(R.id.spinnerEscolaridade);
         pessoa.setEscolaridade(edtEscolaridade.getSelectedItem().toString());
 
-        EditText edtEndereco = (EditText) findViewById(R.id.endereco);
         pessoa.setEndereco(edtEndereco.getText().toString());
 
-        EditText edtBairro = (EditText) findViewById(R.id.bairro);
         pessoa.setBairro(edtBairro.getText().toString());
 
-        Spinner edtEstado = (Spinner) findViewById(R.id.spinner2);
         pessoa.setEstado(edtEstado.getSelectedItem().toString());
 
         return pessoa;

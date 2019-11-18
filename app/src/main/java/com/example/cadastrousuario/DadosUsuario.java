@@ -1,23 +1,45 @@
 package com.example.cadastrousuario;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class DadosUsuario extends AppCompatActivity {
 
+    Button button;
 
  @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_usuario);
 
+        button = findViewById(R.id.snackBarSalvar);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Deseja concluir o cadastro?", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Finalizar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+
+                    }
+                }).show();
+            }
+        });
 
 
         Pessoa pessoa = new Pessoa();
@@ -40,30 +62,32 @@ public class DadosUsuario extends AppCompatActivity {
 
         textSobrenome.setText("Sobrenome: " + pessoa.getSobreNome());
 
-        textTelefone.setText("Telefone: "+pessoa.getTelefone());
+        textTelefone.setText("Telefone: "+ pessoa.getTelefone());
 
-        textCelular.setText("Celular: "+pessoa.getCelular());
+        textCelular.setText("Celular: "+ pessoa.getCelular());
 
-        textCpf.setText("CPF: "+pessoa.getCpf());
+        textCpf.setText("CPF: "+ pessoa.getCpf());
 
-        textEscolaridade.setText("Escolaridade: "+pessoa.getEscolaridade().toString());
+        textEscolaridade.setText("Escolaridade: "+ pessoa.getEscolaridade().toString());
 
-        textEndereco.setText("Endereço: "+pessoa.getEndereco().toString());
+        textEndereco.setText("Endereço: "+ pessoa.getEndereco().toString());
 
-        textBairro.setText("Bairro: "+pessoa.getBairro().toString());
+        textBairro.setText("Bairro: "+ pessoa.getBairro().toString());
 
-        textEstado.setText("Estado: "+pessoa.getEstado());
-
-    }
-
-    public void success(View view){
-     Pessoa pessoa = new Pessoa("","","","","","","","","","","");
-     Intent intent = new Intent(this, MainActivity.class);
-     startActivity(intent);
-     String message = "Cadastro concluído com Sucesso!";
-     Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+        textEstado.setText("Estado: "+ pessoa.getEstado());
 
     }
 
+    public void backPage (View view){
+     onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
 }
+
+
+

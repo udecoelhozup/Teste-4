@@ -8,6 +8,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         tools:context=".DadosUsuario">
 
         <TextView
@@ -17,11 +20,25 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.073" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="57dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintBottom_toTopOf="@+id/recebeSobrenome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.718"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.619"></View>
 
         <TextView
             android:id="@+id/recebeSobrenome"
@@ -30,9 +47,20 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeNome" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeSobrenome"></View>
 
         <TextView
             android:id="@+id/recebeTelefone"
@@ -41,9 +69,21 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeSobrenome" />
+
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeTelefone"></View>
 
         <TextView
             android:id="@+id/recebeCelular"
@@ -52,9 +92,21 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeTelefone" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeCelular"></View>
+
 
         <TextView
             android:id="@+id/recebeCpf"
@@ -63,9 +115,21 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeCelular" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeCpf"></View>
+
 
         <TextView
             android:id="@+id/recebeEscolaridade"
@@ -74,9 +138,21 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeCpf" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeEscolaridade"></View>
+
 
         <TextView
             android:id="@+id/recebeEndereco"
@@ -85,9 +161,21 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeEscolaridade" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeEndereco"></View>
+
 
         <TextView
             android:id="@+id/recebeBairro"
@@ -96,9 +184,21 @@
             android:layout_marginTop="36dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeEndereco" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeBairro"></View>
+
 
         <TextView
             android:id="@+id/recebeEstado"
@@ -108,12 +208,24 @@
             android:layout_marginBottom="50dp"
             android:paddingLeft="5dp"
             android:text="TextView"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeBairro"
             app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:id="@+id/view9"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeEstado"></View>
+
 
         <TextView
             android:id="@+id/textView16"
@@ -122,29 +234,44 @@
             android:layout_marginBottom="24dp"
             android:text="Usuário Cadastrado"
             android:textAlignment="center"
-            android:textSize="15dp"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBtnEnviar"
+            android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/recebeNome"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.968" />
-
-        <Button
-            android:id="@+id/button"
-            android:background="@drawable/layoutbuttontwo"
-            android:textColor="@color/colorBtnForm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="600dp"
-            android:layout_marginBottom="32dp"
-            android:text="Concluir"
-            android:onClick="success"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/snackBarSalvar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/layoutbuttontwo"
+            android:text="Finalizar"
+            android:textColor="@color/colorBtnForm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeEstado"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/voltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/white"
+            android:onClick="backPage"
+            app:layout_constraintTop_toBottomOf="@+id/snackBarSalvar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

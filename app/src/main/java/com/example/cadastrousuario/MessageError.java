@@ -7,10 +7,20 @@ public class MessageError {
     private String logMessageTelefone;
     private String logMessageCelular;
     private String logMessageCpf;
+    private String logMessageRg;
     private String logMessageCpfInvalid;
     private String logMessageEndereco;
     private String logMessageBairro;
     private String logMessageSenha;
+
+    public String getLogMessageRg() {
+        return logMessageRg;
+    }
+
+    public void setLogMessageRg(String logMessageRg) {
+        this.logMessageRg = logMessageRg;
+    }
+
 
     public String getLogMessageNome() {
 

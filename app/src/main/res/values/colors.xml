@@ -7,4 +7,6 @@
     <color name="colorBtnEnviar">#007AA1</color>
     <color name="colorBtnView">#A09F9F</color>
     <color name="colorBtnForm">#A5C138</color>
+    <color name="colorBlack">#333333</color>
+    <color name="colorBlue">#AEDEEB</color>
 </resources>

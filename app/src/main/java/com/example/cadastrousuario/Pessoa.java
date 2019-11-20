@@ -11,6 +11,7 @@ public class Pessoa implements Serializable {
     private String telefone;
     private String celular;
     private String cpf;
+    private String rg;
     private String escolaridade;
     private String endereco;
     private String bairro;
@@ -18,22 +19,25 @@ public class Pessoa implements Serializable {
     private String senha;
     private String confirmacaoSenha;
 
+
     public Pessoa() {
     }
 
 
-    public Pessoa(String nome, String sobreNome, String telefone, String celular, String cpf, String escolaridade, String endereco, String bairro, String estado, String senha, String confirmacaoSenha) {
+    public Pessoa(String nome, String sobreNome, String telefone, String celular, String cpf, String rg, String escolaridade, String endereco, String bairro, String estado, String senha, String confirmacaoSenha) {
         this.nome = nome;
         this.sobreNome = sobreNome;
         this.telefone = telefone;
         this.celular = celular;
         this.cpf = cpf;
+        this.rg = rg;
         this.escolaridade = escolaridade;
         this.endereco = endereco;
         this.bairro = bairro;
         this.estado = estado;
         this.senha = senha;
         this.confirmacaoSenha = confirmacaoSenha;
+
     }
 
 
@@ -76,6 +80,15 @@ public class Pessoa implements Serializable {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
 
     public String getEscolaridade() {
         return escolaridade;

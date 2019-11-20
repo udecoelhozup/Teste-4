@@ -12,36 +12,36 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class DadosUsuario extends AppCompatActivity {
 
     Button button;
+    FloatingActionButton floatingActionButton;
 
- @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_usuario);
 
-        button = findViewById(R.id.snackBarSalvar);
-
-        button.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton = findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "Deseja concluir o cadastro?", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Finalizar", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                            @Override
+                            public void onClick(View v) {
 
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
 
-                    }
-                }).show();
+                            }
+                        }).show();
             }
         });
-
-
         Pessoa pessoa = new Pessoa();
 
         TextView textNome = (TextView) findViewById(R.id.recebeNome);
@@ -49,6 +49,7 @@ public class DadosUsuario extends AppCompatActivity {
         TextView textTelefone = (TextView) findViewById(R.id.recebeTelefone);
         TextView textCelular = (TextView) findViewById(R.id.recebeCelular);
         TextView textCpf = (TextView) findViewById(R.id.recebeCpf);
+        TextView textRg = (TextView) findViewById(R.id.recebeRg);
         TextView textEscolaridade = (TextView) findViewById(R.id.recebeEscolaridade);
         TextView textEndereco = (TextView) findViewById(R.id.recebeEndereco);
         TextView textBairro = (TextView) findViewById(R.id.recebeBairro);
@@ -62,30 +63,34 @@ public class DadosUsuario extends AppCompatActivity {
 
         textSobrenome.setText("Sobrenome: " + pessoa.getSobreNome());
 
-        textTelefone.setText("Telefone: "+ pessoa.getTelefone());
+        textTelefone.setText("Telefone: " + pessoa.getTelefone());
 
-        textCelular.setText("Celular: "+ pessoa.getCelular());
+        textCelular.setText("Celular: " + pessoa.getCelular());
 
-        textCpf.setText("CPF: "+ pessoa.getCpf());
+        textCpf.setText("CPF: " + pessoa.getCpf());
 
-        textEscolaridade.setText("Escolaridade: "+ pessoa.getEscolaridade().toString());
+        textRg.setText("RG: " + pessoa.getRg());
 
-        textEndereco.setText("Endereço: "+ pessoa.getEndereco().toString());
+        textEscolaridade.setText("Escolaridade: " + pessoa.getEscolaridade().toString());
 
-        textBairro.setText("Bairro: "+ pessoa.getBairro().toString());
+        textEndereco.setText("Endereço: " + pessoa.getEndereco().toString());
 
-        textEstado.setText("Estado: "+ pessoa.getEstado());
+        textBairro.setText("Bairro: " + pessoa.getBairro().toString());
+
+        textEstado.setText("Estado: " + pessoa.getEstado());
+
 
     }
 
-    public void backPage (View view){
-     onBackPressed();
+    public void backPage(View view) {
+        onBackPressed();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
+
 
 }
 

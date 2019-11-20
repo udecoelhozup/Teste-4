@@ -132,6 +132,28 @@
 
 
         <TextView
+            android:id="@+id/recebeRg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:paddingLeft="5dp"
+            android:text="TextView"
+            android:textAllCaps="true"
+            app:layout_constraintTop_toBottomOf="@+id/view5"
+            tools:layout_editor_absoluteX="10dp" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/layoutbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recebeRg"></View>
+
+
+        <TextView
             android:id="@+id/recebeEscolaridade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,13 +163,13 @@
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recebeCpf" />
+            app:layout_constraintTop_toBottomOf="@+id/recebeRg" />
 
         <View
             android:id="@+id/view6"
             android:layout_width="0dp"
             android:layout_height="3dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="3dp"
             android:background="@drawable/layoutbutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -245,32 +267,35 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/snackBarSalvar"
+        <ImageButton
+            android:id="@+id/voltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:background="@drawable/layoutbuttontwo"
-            android:text="Finalizar"
-            android:textColor="@color/colorBtnForm"
+            android:layout_marginTop="32dp"
+            android:background="@android:color/white"
+            android:onClick="backPage"
+            app:layout_constraintEnd_toStartOf="@+id/textView16"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            app:backgroundTint="#8BC34A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recebeEstado"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageButton
-            android:id="@+id/voltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@android:color/white"
-            android:onClick="backPage"
-            app:layout_constraintTop_toBottomOf="@+id/snackBarSalvar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ic_person_add_24px" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

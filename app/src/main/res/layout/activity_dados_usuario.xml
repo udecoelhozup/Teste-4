@@ -11,7 +11,7 @@
         android:layout_marginBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        tools:context=".DadosUsuario">
+        tools:context=".view.DadosUsuario">
 
         <TextView
             android:id="@+id/recebeNome"

@@ -1,5 +1,7 @@
 package com.example.cadastrousuario;
 
+import com.example.cadastrousuario.view.MessageError;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

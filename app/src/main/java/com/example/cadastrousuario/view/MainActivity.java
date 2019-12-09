@@ -1,9 +1,7 @@
-package com.example.cadastrousuario;
+package com.example.cadastrousuario.view;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,71 +10,48 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cadastrousuario.Presenter.PresenterMain;
+import com.example.cadastrousuario.R;
+import com.example.cadastrousuario.contract.ContractMain;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.SimpleMaskTextWatcher;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
-    Spinner edtEscolaridade;
-    Spinner edtEstado;
-    Button limparDados;
-    EditText edtNome;
-    EditText edtSobrenome;
-    EditText edtTelefone;
-    EditText edtCelular;
-    EditText edtCpf;
-    EditText edtRg;
-    EditText edtEndereco;
-    EditText edtBairro;
-    EditText edtSenha;
-    EditText edtConfirmaSenha;
+public class MainActivity extends AppCompatActivity  implements ContractMain.view {
+    Spinner edtEscolaridade, edtEstado;
+    Button limparDados, sendData;
+    EditText edtNome, edtSobrenome, edtTelefone, edtCelular, edtCpf, edtRg, edtEndereco, edtBairro, edtSenha, edtConfirmaSenha;
     ImageButton extProgram;
-
+    private ContractMain.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        Pessoa pessoa = new Pessoa();
-        edtEscolaridade = (Spinner) findViewById(R.id.spinnerEscolaridade);
+
+        presenter = new PresenterMain(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onStart();
+    }
+
+    public void setSpinnerUniversity() {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Escolaridades, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         edtEscolaridade.setAdapter(adapter);
-
-        edtEstado = (Spinner) findViewById(R.id.spinner2);
+    }
+    public void setSpinnerState() {
         ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this, R.array.Estados, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         edtEstado.setAdapter(adapter1);
-
-        limparDados();
-
-        extProgram = (ImageButton) findViewById(R.id.modalSair);
-        extProgram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-
-            }
-
-        });
-
     }
 
-    public void openDialog() {
-        Dialog dialog = new Dialog();
-        dialog.show(getSupportFragmentManager(), "Mensagem de Erro");
-    }
-
-
-    public MessageError msg() {
+    public MessageError logMessages() {
         MessageError msg = new MessageError();
-
         msg.setLogMessageNome("O campo Nome é obrigatório");
         msg.setLogMessageSobrenome("O campo Sobrenome é obrigatório");
         msg.setLogMessageTelefone("O campo Telefone é obrigatório");
@@ -86,12 +61,11 @@ public class MainActivity extends AppCompatActivity {
         msg.setLogMessageEndereco("O campo Endereço é obrigatório");
         msg.setLogMessageBairro("O campo Bairro é obrigatório");
         msg.setLogMessageSenha("As senhas não conferem");
-
         return msg;
     }
 
-    public void insereDados() {
-
+    public void setData() {
+        extProgram = (ImageButton) findViewById(R.id.modalSair);
         edtNome = (EditText) findViewById(R.id.nome);
         edtSobrenome = (EditText) findViewById(R.id.sobreNome);
         edtTelefone = (EditText) findViewById(R.id.telefone);
@@ -105,7 +79,41 @@ public class MainActivity extends AppCompatActivity {
         edtSenha = (EditText) findViewById(R.id.senha);
         edtConfirmaSenha = (EditText) findViewById(R.id.corfimaSenha);
         extProgram = (ImageButton) findViewById(R.id.modalSair);
+        edtEscolaridade = (Spinner) findViewById(R.id.spinnerEscolaridade);
+        edtEstado = (Spinner) findViewById(R.id.spinner2);
+        limparDados = (Button) findViewById(R.id.reset);
+        sendData = (Button) findViewById(R.id.sendData);
 
+        extProgram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onButtonClickedFinish();
+            }
+        });
+
+        sendData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onButtonClickedSend();
+            }
+        });
+
+        limparDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onButtonClickedClear();
+            }
+        });
+    }
+    public void sendData(){
+        sendData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onButtonClickedSend();
+            }
+        });
+    }
+    public void setMask() {
         SimpleMaskFormatter smfCell = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
         SimpleMaskTextWatcher smtfCell = new SimpleMaskTextWatcher(edtCelular, smfCell);
         edtCelular.addTextChangedListener(smtfCell);
@@ -125,9 +133,8 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean validarCampos() {
         Pessoa pessoa = new Pessoa();
-        MessageError log = msg();
+        MessageError log = logMessages();
         boolean validator = true;
-        insereDados();
 
         String nome = edtNome.getText().toString();
         String sobreNome = edtSobrenome.getText().toString();
@@ -177,77 +184,79 @@ public class MainActivity extends AppCompatActivity {
             validator = false;
             Toast.makeText(getApplicationContext(), log.getLogMessageSenha(), Toast.LENGTH_SHORT).show();
         }
-
         return validator;
     }
+/*
 
     public void limparDados() {
-        insereDados();
-        limparDados = (Button) findViewById(R.id.reset);
         limparDados.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
-                edtNome.getText().clear();
-                edtSobrenome.getText().clear();
-                edtTelefone.getText().clear();
-                edtCelular.getText().clear();
-                edtCpf.getText().clear();
-                edtRg.getText().clear();
-                edtEscolaridade.setSelection(0);
-                edtEndereco.getText().clear();
-                edtBairro.getText().clear();
-                edtEstado.setSelection(0);
-                edtSenha.getText().clear();
-                edtConfirmaSenha.getText().clear();
+                presenter.onButtonClickedClear();
             }
         });
     }
+*/
 
-    public void enviarDados(View view) {
+    public Pessoa registerUser() {
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome(edtNome.getText().toString());
+        pessoa.setSobreNome(edtSobrenome.getText().toString());
+        pessoa.setTelefone(edtTelefone.getText().toString());
+        pessoa.setCelular(edtCelular.getText().toString());
+        pessoa.setCpf(edtCpf.getText().toString());
+        pessoa.setRg(edtRg.getText().toString());
+        pessoa.setEscolaridade(edtEscolaridade.getSelectedItem().toString());
+        pessoa.setEndereco(edtEndereco.getText().toString());
+        pessoa.setBairro(edtBairro.getText().toString());
+        pessoa.setEstado(edtEstado.getSelectedItem().toString());
+        return pessoa;
+    }
 
+    @Override
+    public void navigateOnNextScreen() {
         boolean validator = validarCampos();
-        Intent intent = new Intent(this, DadosUsuario.class);
+        Intent intent = new Intent(getApplicationContext(), DadosUsuario.class);
         Pessoa pessoa = registerUser();
         intent.putExtra("objeto", pessoa);
-
         if (validator) {
             startActivity(intent);
         } else {
             registerUser();
         }
-
-
     }
 
-    public Pessoa registerUser() {
-
-        Pessoa pessoa = new Pessoa();
-        insereDados();
-
-        pessoa.setNome(edtNome.getText().toString());
-
-        pessoa.setSobreNome(edtSobrenome.getText().toString());
-
-        pessoa.setTelefone(edtTelefone.getText().toString());
-
-        pessoa.setCelular(edtCelular.getText().toString());
-
-        pessoa.setCpf(edtCpf.getText().toString());
-
-        pessoa.setRg(edtRg.getText().toString());
-
-        pessoa.setEscolaridade(edtEscolaridade.getSelectedItem().toString());
-
-        pessoa.setEndereco(edtEndereco.getText().toString());
-
-        pessoa.setBairro(edtBairro.getText().toString());
-
-        pessoa.setEstado(edtEstado.getSelectedItem().toString());
-
-        return pessoa;
-
+    @Override
+    public void clearAllFields() {
+        edtNome.getText().clear();
+        edtSobrenome.getText().clear();
+        edtTelefone.getText().clear();
+        edtCelular.getText().clear();
+        edtCpf.getText().clear();
+        edtRg.getText().clear();
+        edtEscolaridade.setSelection(0);
+        edtEndereco.getText().clear();
+        edtBairro.getText().clear();
+        edtEstado.setSelection(0);
+        edtSenha.getText().clear();
+        edtConfirmaSenha.getText().clear();
     }
 
+    @Override
+    public void showDialogMessage() {
+        extProgram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog();
+                dialog.show(getSupportFragmentManager(), "Mensagem de Erro");
+            }
+        });
+    }
+
+
+
+    @Override
+    public MessageError msg() {
+        return null;
+    }
 }

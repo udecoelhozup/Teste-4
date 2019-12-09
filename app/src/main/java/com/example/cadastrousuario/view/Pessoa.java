@@ -1,4 +1,4 @@
-package com.example.cadastrousuario;
+package com.example.cadastrousuario.view;
 
 import android.widget.EditText;
 

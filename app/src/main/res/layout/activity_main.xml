@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         android:padding="10dp"
-        tools:context=".MainActivity">
+        tools:context=".view.MainActivity">
 
         <ImageView
             android:layout_width="100dp"
@@ -111,7 +111,7 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:inputType="phone"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toTopOf="@+id/sendData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +139,7 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:inputType="phone"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toTopOf="@+id/sendData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -245,7 +245,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toTopOf="@+id/sendData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerEscolaridade"
@@ -352,17 +352,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/button4"
+            app:layout_constraintStart_toEndOf="@+id/sendData"
             app:layout_constraintTop_toBottomOf="@+id/corfimaSenha"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/sendData"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
             android:background="@drawable/layoutbuttontwo"
-            android:onClick="enviarDados"
             android:text="Cadastrar"
             android:textColor="@color/colorBtnForm"
             app:layout_constraintStart_toStartOf="parent"
@@ -375,7 +374,7 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toTopOf="@+id/sendData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/senha"

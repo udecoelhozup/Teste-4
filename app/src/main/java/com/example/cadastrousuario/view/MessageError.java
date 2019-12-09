@@ -1,4 +1,4 @@
-package com.example.cadastrousuario;
+package com.example.cadastrousuario.view;
 
 public class MessageError {
 
